@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package sortlistapp;
+package roshamboapp;
 
 import java.util.Scanner;
 
@@ -11,64 +11,35 @@ import java.util.Scanner;
  *
  * @author Christina
  */
-public class Validator 
-{
-     public static int vScore(Scanner sc, String prompt)
-    {
-        int sScore =0;
-        boolean isValid=false;
-        
-        while (isValid==false)
+public class Validator {
+  
+     public static String getString(String prompt)
         {
-            System.out.print(prompt);
-            sScore=sc.nextInt();
-            if (sScore>100||sScore<0) 
-            {
-                System.out.println("Error! Please enter a score that is between 0 to 100");
-            }
+           String s = "";
+        boolean isValid = false;
+
+        while (!isValid) // loops until user enters a non-blank line
+        {
+        System.out.print(prompt);
+        s = sc.nextLine();
+        if (!s.equals(""))
+        isValid = true;
+        }
+        return s;
+        }   
+    
+    public static String getString(Scanner sc, String prompt, String y, String n)
+    {
+        String s = null;
+        boolean isValid = false;
+        while (!isValid)
+        {
+            s = getString(sc,prompt);
+            if (s.equalsIgnoreCase("y") ||s.equalsIgnoreCase("n"))
+                isValid = true;
             else
-            {
-                isValid=true;
-            }
-            
+                System.out.println("Error! Entry must be 'y' or 'n'. Try again.");
         }
-        return sScore;
-        
-    }
-    
-
-    
-    public static String firstName(Scanner sc, String prompt)
-    {
-        Scanner input =new Scanner(System.in);
-        String  StudentName="";
-        boolean isvalid=false;
-       
-
-        while (isvalid==false)
-        {
-          
-            System.out.print(prompt);
-
-            StudentName = input.nextLine();
-
-            if (StudentName == null || StudentName.equals(""))
-            {
-                System.out.println("Error! You must enter a name.");
-            }
-           
-            else 
-              
-            {
-               isvalid=true;
-             
-            }
-         
-        }
-        return StudentName; 
-        
-    }     
-    
-}
-    
-
+        return s;
+    }  
+ }
