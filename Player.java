@@ -32,7 +32,7 @@ public abstract class Player
         this.response = response;
     }
     
-    //get method for resonse
+    //get method for response
     public String getResponse()
     {
         return response;
